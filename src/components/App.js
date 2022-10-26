@@ -57,9 +57,9 @@ const App = () => {
         
   };
 
-  // const submitHandler = (e) => {
-    
-  // };
+  const submitHandler = (e) => {
+      e.preventDefault();
+  };
 
   return (
     <div id="main">
