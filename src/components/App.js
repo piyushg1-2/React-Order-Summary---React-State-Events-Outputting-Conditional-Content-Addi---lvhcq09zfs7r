@@ -60,7 +60,7 @@ const App = () => {
             </div>
             <div className="plan">
               <h4 id="plan-title">{currentPlan.name}</h4>
-              <p id="plan-price">${currentPrice}</p>
+              <p id="plan-price">${currentPlan.price}</p>
             </div>
             <select onChange={changeHandler} className="select" id="select">
               <option disabled selected>
