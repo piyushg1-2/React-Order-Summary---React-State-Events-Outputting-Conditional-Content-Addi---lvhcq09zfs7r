@@ -10,48 +10,14 @@ const options = [
 ];
 
 const App = () => {
-  const [currentPlan, setCurrentPlan] = useState('');
-  const [currentPrice,setCurrentPrice]=useState('');
+  const [currentPlan, setCurrentPlan] = useState(options[0]);
+  
   
   const changeHandler = (e) => {
-      let val=e.target.value;
-      console.log(e.target.value);
-        
-       if(val=="Annual Plan"){
-          for(let i=0;i<options.length;i++){
-             if(options[i].plan=="Annual Plan"){
-                 setCurrentPlan('Annual Plan');
-                 setCurrentPrice('$'+options[i].price);
-             }
-          }
-       }
-       
-       if(val=="6-Month Plan"){
-        for(let i=0;i<options.length;i++){
-           if(options[i].plan=="6-Month Plan"){
-               setCurrentPlan('6-Month Plan');
-               setCurrentPrice('$'+options[i].price);
-           }
-        }
-      }
-
-      if(val=="3-Month Plan"){
-        for(let i=0;i<options.length;i++){
-           if(options[i].plan=="3-Month Plan"){
-               setCurrentPlan('3-Month Plan');
-               setCurrentPrice('$'+options[i].price);
-           }
-        }
-      }
-
-      if(val=="1-Month Plan"){
-        for(let i=0;i<options.length;i++){
-           if(options[i].plan=="1-Month Plan"){
-               setCurrentPlan('1-Month Plan');
-               setCurrentPrice('$'+options[i].price);
-           }
-        }
-     }
+    
+      var selectedlist=options[e.target.value];
+      setCurrentPlan(selectedlist);
+     
       
   
         
@@ -78,7 +44,7 @@ const App = () => {
             any device anywhere you like.
           </p>
         </div>
-        <form onSubmit={(e)=>submitHandler(e)}>
+        <form onSubmit={submitHandler}>
           <div className="select-container">
             <div className="music-icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48">
@@ -93,10 +59,10 @@ const App = () => {
               </svg>
             </div>
             <div className="plan">
-              <h4 id="plan-title">{currentPlan}</h4>
+              <h4 id="plan-title">{currentPlan.name}</h4>
               <p id="plan-price">{currentPrice}</p>
             </div>
-            <select onChange={(e)=>changeHandler(e)} className="select" id="select">
+            <select onChange={changeHandler} className="select" id="select">
               <option disabled selected>
                 Change
               </option>
