@@ -14,12 +14,9 @@ const App = () => {
   
   
   const changeHandler = (e) => {
-    
-      var selectedlist=options[e.target.value];
-      setCurrentPlan(selectedlist);
      
-      
-  
+         var selectedlist=options[e.target.value];
+         setCurrentPlan(selectedlist)  ;
         
   };
 
@@ -44,7 +41,7 @@ const App = () => {
             any device anywhere you like.
           </p>
         </div>
-        <form onSubmit={submitHandler}>
+        <form onSubmit={(e)=>submitHandler(e)}>
           <div className="select-container">
             <div className="music-icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48">
@@ -59,15 +56,15 @@ const App = () => {
               </svg>
             </div>
             <div className="plan">
-              <h4 id="plan-title">{currentPlan.name}</h4>
+              <h4 id="plan-title">{currentPlan.plan}</h4>
               <p id="plan-price">${currentPlan.price}</p>
             </div>
-            <select onChange={changeHandler} className="select" id="select">
+            <select onChange={(e)=>changeHandler(e)} className="select" id="select">
               <option disabled selected>
                 Change
               </option>
               {options.map((option) => (
-                <option key={option.key}>
+                <option key={option.key} value={option.key}>
                    {option.plan}
                 </option>
               ))}
